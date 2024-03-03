@@ -18,8 +18,6 @@ const allPost = async()=>{
 
   AllData = data.posts
 
-  postList.textContent = " "
-
 
   AllData.forEach(data=>{
 
