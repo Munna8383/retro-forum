@@ -2,26 +2,40 @@ const latestContainer = document.getElementById("latest-container");
 const postList = document.getElementById("post-list");
 const postCount = document.getElementById("post-count")
 const countIncrease = document.getElementById("countIncrease")
-
- let count = 0
-
-
+let count = 0
+const searchInput = document.getElementById("search-input");
 
 
 
 
-const allPost = async()=>{
 
-  const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts")
+
+const searchPost = async(searchtext)=>{
+
+  let indicate = null;
+
+  const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchtext}`)
 
   const data = await res.json();
 
   AllData = data.posts
 
+  postList.textContent = " "
+
+
   AllData.forEach(data=>{
 
+    if(data.isActive){
+      indicate = '<span id="indicate" class="indicator-item indicator-start badge badge-success"></span>'
+    }
+    else
+    {
+      indicate ='<span id="indicate" class="indicator-item indicator-start badge badge-error"></span>'
+    }
 
-     const div = document.createElement("div")
+
+     const div = document.createElement("div");
+
 
      div.innerHTML=`
 
@@ -30,7 +44,9 @@ const allPost = async()=>{
                     <div>
 
                          <div class="indicator">
-                        <span id="indicate" class="indicator-item indicator-start badge badge-error"></span>
+
+                         ${indicate}
+                        
                         <div class="grid w-32 h-32 bg-base-300 place-items-center"><img class="rounded-lg" src="${data.image}" alt=""></div>
                          </div>
 
@@ -79,13 +95,6 @@ const allPost = async()=>{
 
                     </div>
 
-
-                    
-
-
-
-
-
                 </div>
      
      
@@ -94,11 +103,10 @@ const allPost = async()=>{
      postList.appendChild(div)
 
   })
-
-
+  loading(false)
 
 }
-allPost()
+searchPost("comedy")
 
 
 const addPost = (data1,data2)=>{
@@ -108,7 +116,7 @@ const addPost = (data1,data2)=>{
 
   const div = document.createElement("div");
   div.innerHTML =`
-  <div class="flex justify-between bg-stone-100 rounded-xl px-5 py-3">
+  <div class="flex justify-between bg-teal-50 rounded-xl px-5 py-3">
   <div>
 
       <h1>${data1}</h1>
@@ -137,36 +145,30 @@ const addPost = (data1,data2)=>{
 
 
 
+const handleSearch =()=>{
+  loading(true)
+
+  const searchInputData = searchInput.value;
+  
+  allPost(searchInputData)
+
+}
+
+setTimeout(loading = (isloading)=>{
 
 
+  const loadingSpinner = document.getElementById("loading");
 
+  if(isloading){
+    loadingSpinner.classList.remove("hidden")
+  }
+  else{
+    loadingSpinner.classList.add("hidden")
+  }
 
+  clearTimeout
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+},2000)
 
 
 

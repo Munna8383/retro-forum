@@ -35,7 +35,7 @@
                   <a class="btn btn-ghost text-black font-extrabold text-lg lg:text-4xl">D Dynasty</a>
                 </div>
              
-                <div class="navbar-end gap-2 lg:gap-10">
+                <div class="navbar-end gap-2 lg:gap-5">
 
                     <div class="tooltip" data-tip="Home">
                         <button class="btn"> <i class="fa-solid fa-house"></i></button>
@@ -59,7 +59,7 @@
 
         <!-- Header Section -->
 
-        <div class="mt-10 space-y-5 bg-[linear-gradient(45deg,rgba(0,0,0,0.4),rgba(0,0,0,0.1)),url(./images/bgbanner.png)] bg-center bg-cover  text-white font-medium rounded-lg  py-20 px-12 flex items-center flex-col lg:flex-row justify-evenly">
+        <div class="mt-10 bg-[ bg-gradient-to-t from-blue-800 via-gray-800 to-sky-900,url(./images/bgbanner.png)] bg-center bg-cover  text-white font-medium rounded-lg  py-20 px-12 flex items-center flex-col lg:flex-row justify-evenly">
 
             <div class="space-y-10">
 
@@ -69,14 +69,14 @@
                 <!-- Search -->
 
                 <div class="bg-white px-2 py-1 rounded-xl w-fit">
-                    <input type="text" class="text-black outline-none" placeholder="Search Here">
-                    <button class="bg-[#797DFC] text-white rounded-xl py-2 px-4">Search</button>
+                    <input id="search-input" type="text" class="text-black outline-none" placeholder="Search Here">
+                    <button onclick="handleSearch()" class="bg-[#797DFC] text-white rounded-xl py-2 px-4">Search</button>
                 </div>
 
                 <!-- Search -->
 
             </div>
-            <div class="bg-slate-500 py-8 rounded-xl px-12">
+            <div class="bg-white text-black py-8 rounded-xl px-12">
 
                 <div class="flex gap-10 justify-between ">
                     <h1 class="text-center lg:text-right text-2xl">Registered</h1>
@@ -130,7 +130,7 @@
 
 
            
-             <div  class="flex justify-between gap-5 mt-5">
+             <div  class="flex flex-col lg:flex-row justify-between gap-5 mt-5">
 
 
                 <!-- post list -->
@@ -141,17 +141,17 @@
                
 
                <!-- Title list -->
-                <div class="flex-1">
+                <div class="flex-1 bg-slate-100 px-4 py-2 rounded-xl">
                     <div>
 
                         <div class="flex justify-between">
     
-                            <h1>Title</h1>
-                            <h1>Mark As Read (<span id="countIncrease"></span>)</h1>
+                            <h1 class="text-xl font-extrabold">Title</h1>
+                            <h1 class="text-lg"><span class="mr-2"><i class="fa-solid fa-check-double text-lime-700"></i></span>Mark As Read (<span class="font-extrabold" id="countIncrease"></span>)</h1>
     
                         </div>
     
-                        <div id="post-count" class="mt-3 space-y-5">
+                        <div id="post-count" class="mt-3 space-y-5 ">
                          
                             
                         </div>
@@ -175,12 +175,12 @@
 
         <!-- Join Our Forum -->
 
-        <section class="mt-10">
-            <div class="flex justify-between flex-col-reverse flex-col lg:flex-row items-center bg-slate-100 py-10 px-7 rounded-xl">
+        <section class="mt-10 ">
+            <div class="flex justify-between flex-col-reverse flex-col lg:flex-row items-center bg-slate-100 py-10 px-7 rounded-xl bg-gradient-to-b from-slate-900 to-indigo-600">
                 <div class="space-y-4 flex-1">
 
-                    <h1 class="text-3xl font-extrabold text-center lg:text-left">Join Our Forum</h1>
-                    <h1 class="lg:w-2/3 text-lg font-bold">Explore our wide range of [products/services] designed to [solve a problem, meet a need, or enhance an experience]. Whether you're a [type of customer, e.g., individual, small business, large corporation], we have the perfect solution for you.
+                    <h1 class="text-3xl font-extrabold text-center lg:text-left text-white">Join Our Forum</h1>
+                    <h1 class="lg:w-2/3 text-lg font-bold text-white">Explore our wide range of [products/services] designed to [solve a problem, meet a need, or enhance an experience]. Whether you're a [type of customer, e.g., individual, small business, large corporation], we have the perfect solution for you.
 
                     </h1>
                     <button class="bg-[#797DFC] py-2 px-6 rounded-2xl text-white">Register Now</button>
@@ -194,11 +194,11 @@
 
 
 
-        <!-- Lets Discuss -->
+        <!-- Latest Post -->
 
         <section class="mt-10">
             <div class="text-center space-y-3">
-                <h1 class="text-4xl font-extrabold">Lets Discuss</h1>
+                <h1 class="text-4xl font-extrabold">Latest Post</h1>
                 <p class="w-2/3 mx-auto text-lg font-semibold">In the context of social media, a "post" typically refers to a piece of content shared by a user. This can include text, images, videos, or a combination of these. Social media platforms like Facebook, Twitter, Instagram, and others rely on users creating and sharing posts to engage with their audience.</p>
             </div>
 
