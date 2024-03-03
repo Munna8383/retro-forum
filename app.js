@@ -8,13 +8,11 @@ const searchInput = document.getElementById("search-input");
 
 
 
-
-
-const searchPost = async(searchtext)=>{
+const allPost = async()=>{
 
   let indicate = null;
 
-  const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchtext}`)
+  const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts")
 
   const data = await res.json();
 
@@ -103,10 +101,9 @@ const searchPost = async(searchtext)=>{
      postList.appendChild(div)
 
   })
-  loading(false)
 
 }
-searchPost("comedy")
+allPost()
 
 
 const addPost = (data1,data2)=>{
@@ -146,38 +143,14 @@ const addPost = (data1,data2)=>{
 
 
 const handleSearch =()=>{
-  loading(true)
+
+
 
   const searchInputData = searchInput.value;
   
-  allPost(searchInputData)
+  searchPost(searchInputData)
 
 }
-
-setTimeout(loading = (isloading)=>{
-
-
-  const loadingSpinner = document.getElementById("loading");
-
-  if(isloading){
-    loadingSpinner.classList.remove("hidden")
-  }
-  else{
-    loadingSpinner.classList.add("hidden")
-  }
-
-  clearTimeout
-
-},2000)
-
-
-
-
-
-
-
-
-
 
 
 
