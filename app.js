@@ -1,6 +1,138 @@
 const latestContainer = document.getElementById("latest-container");
+const postList = document.getElementById("post-list");
+const postCount = document.getElementById("post-count")
+const countIncrease = document.getElementById("countIncrease")
+
+ let count = 0
 
 
+
+
+
+
+const allPost = async()=>{
+
+  const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts")
+
+  const data = await res.json();
+
+  AllData = data.posts
+
+  AllData.forEach(data=>{
+
+
+     const div = document.createElement("div")
+
+     div.innerHTML=`
+
+     <div  class="flex space-x-5 bg-slate-100 py-5 px-7 rounded-xl">
+
+                    <div>
+
+                         <div class="indicator">
+                        <span id="indicate" class="indicator-item indicator-start badge badge-error"></span>
+                        <div class="grid w-32 h-32 bg-base-300 place-items-center"><img class="rounded-lg" src="${data.image}" alt=""></div>
+                         </div>
+
+                    </div>
+
+                    <div class="space-y-4 ">
+
+                        <div class="flex gap-10">
+                            <h1># <span>${data.category} </span></h1>
+                            <h1>Author: <span>${data.author.name}</span></h1>
+                        </div>
+
+                        <div>
+                            <h1 class="text-xl font-extrabold">${data.title}</h1>
+                        </div>
+
+                        <div>
+                            <p class="w-3/4">${data.description}</p>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="flex justify-between">
+                            <div class="flex space-x-6">
+
+                                <div class="space-x-2">
+                                    <i class="fa-solid fa-envelope-open-text"></i><span>${data.comment_count}</span>
+                                </div>
+
+                                <div class="space-x-2">
+                                    <i class="fa-regular fa-eye"></i> <span>${data.view_count}</span>
+                                </div>
+
+                                <div class="space-x-2">
+                                    <i class="fa-regular fa-clock"></i> <span>${data.posted_time} min</span>
+                                </div>
+
+
+
+                            </div>
+
+                            <div>
+                                <button onclick="addPost('${data.title}','${data.view_count}')"><i class="fa-solid fa-envelope text-2xl text-teal-600"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    
+
+
+
+
+
+                </div>
+     
+     
+     `
+
+     postList.appendChild(div)
+
+  })
+
+
+
+}
+allPost()
+
+
+const addPost = (data1,data2)=>{
+
+
+
+
+  const div = document.createElement("div");
+  div.innerHTML =`
+  <div class="flex justify-between bg-stone-100 rounded-xl px-5 py-3">
+  <div>
+
+      <h1>${data1}</h1>
+
+  </div>
+
+  <div>
+
+      <i class="fa-regular fa-eye"></i> <span>${data2}</span>
+
+  </div>
+</div>
+  `
+
+  postCount.appendChild(div)
+
+  countIncrease.innerText = count + 1;
+
+  count++
+
+
+
+
+}
 
 
 
