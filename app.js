@@ -85,7 +85,7 @@ const allPost = async()=>{
                             </div>
 
                             <div>
-                                <button onclick="addPost('${data.title}','${data.view_count}')"><i class="fa-solid fa-envelope text-2xl text-teal-600"></i></button>
+                                <button onclick="addPost('${data.title.replace(/'/g,'a')}','${data.view_count}')"><i class="fa-solid fa-envelope text-2xl text-teal-600"></i></button>
                             </div>
                         </div>
 
@@ -143,15 +143,20 @@ const addPost = (data1,data2)=>{
 const handleSearch =()=>{
 
 
-
   const searchInputData = searchInput.value;
 
-  searchPost(searchInputData)
+  searchPost(searchInputData);
+
+  const loading = document.getElementById("loading");
+
+  loading.classList.remove("hidden")
 
 
+  setTimeout(()=>{
 
+    loading.classList.add("hidden")
+  },2000)
 
-  
 
 
 }
@@ -236,7 +241,7 @@ const searchPost = async(element)=>{
                             </div>
 
                             <div>
-                                <button onclick="addPost('${data.title}','${data.view_count}')"><i class="fa-solid fa-envelope text-2xl text-teal-600"></i></button>
+                                <button onclick="addPost('${data.title.replace(/'/g,'a')}','${data.view_count}')"><i class="fa-solid fa-envelope text-2xl text-teal-600"></i></button>
                             </div>
                         </div>
 
